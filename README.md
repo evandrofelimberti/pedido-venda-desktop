@@ -51,8 +51,6 @@ A aplicação usa uma arquitetura em camadas:
 
 ## Banco de Dados
 
-A resolução padrão do arquivo do banco está em `TConnectionManager.GetDataBaseFile`.
-
 Atualmente, o código procura o arquivo em:
 - `src/Data/pedidos.db` relativo à raiz do projeto
 
@@ -77,26 +75,6 @@ Versões implementadas em `Infra.ScriptVersao.pas`:
 - Item calcula total por `quantidade * vr_unitario`
 - Total do pedido é a soma dos totais dos itens
 
-## Solução de Problemas
 
-### Erro: `unable to open database file`
 
-Verifique:
-- Se o arquivo existe em `src/Data/pedidos.db`
-- Se o usuário tem permissão de leitura/escrita na pasta
-- Se o caminho resolvido em runtime corresponde ao ambiente de execução
 
-### Valor unitário incorreto ao inserir item
-
-Garanta que a conversão de string para número use locale `pt-BR` (vírgula decimal) com `TryStrToCurr`/`TryStrToFloat` e sempre atribua fallback quando inválido.
-
-## Melhorias Sugeridas
-
-- Padronizar encoding UTF-8 em mensagens para evitar caracteres corrompidos
-- Adicionar testes automatizados para regras de cálculo
-- Adicionar logging de erro e telemetria básica
-- Configurar caminho do banco por arquivo `.ini` para facilitar deploy
-
-## Licença
-
-Projeto interno para fins de estudo e avaliação técnica.
